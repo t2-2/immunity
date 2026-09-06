@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>כתב חסות — גיזבאללה</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700;900&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Heebo',sans-serif;
+  background:#f5f0e8;
+  color:#1a1a1a;
+  direction:rtl;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:32px 16px;
+}
+.page{
+  width:100%;max-width:720px;
+  background:#fdfaf4;
+  border:1px solid #c8b87a;
+  box-shadow:
+    0 0 0 6px #f5f0e8,
+    0 0 0 7px #c8b87a,
+    0 8px 40px rgba(0,0,0,0.15);
+  padding:56px 64px;
+  position:relative;
+}
+.corner-tl,.corner-tr,.corner-bl,.corner-br{
+  position:absolute;
+  font-size:1.2rem;
+  color:#c8b87a;
+  opacity:0.6;
+}
+.corner-tl{ top:14px; right:18px; }
+.corner-tr{ top:14px; left:18px; }
+.corner-bl{ bottom:14px; right:18px; }
+.corner-br{ bottom:14px; left:18px; }
+
+/* header */
+.header{text-align:center;margin-bottom:36px;padding-bottom:28px;border-bottom:2px solid #c8b87a;position:relative;}
+.org-name{
+  font-family:'Frank Ruhl Libre',serif;
+  font-size:0.65rem;letter-spacing:0.35em;color:#8a7040;
+  text-transform:uppercase;margin-bottom:10px;
+}
+.doc-title{
+  font-family:'Frank Ruhl Libre',serif;
+  font-size:2.4rem;font-weight:900;
+  color:#1a1a1a;line-height:1.1;
+  margin-bottom:6px;
+}
+.doc-subtitle{
+  font-size:0.78rem;color:#7a6a40;letter-spacing:0.12em;
+}
+.doc-number{
+  display:inline-block;
+  margin-top:12px;
+  font-size:0.65rem;font-family:monospace;
+  color:#0f5132;letter-spacing:0.15em;
+  background:#e8f5ec;border:1px solid #9dd4ac;
+  padding:3px 12px;border-radius:2px;
+}
+
+/* meta table */
+.meta-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px 32px;
+  background:#f5f0e8;
+  border:1px solid #d4c08a;
+  padding:18px 22px;
+  margin-bottom:28px;
+}
+.meta-item{}
+.meta-label{
+  font-size:0.6rem;letter-spacing:0.18em;color:#8a7040;
+  text-transform:uppercase;margin-bottom:3px;
+}
+.meta-val{font-size:0.88rem;font-weight:600;color:#1a1a1a;}
+.meta-val.green{color:#0f5132;font-weight:700;}
+
+/* stamp */
+.stamp-row{
+  display:flex;align-items:center;gap:16px;
+  background:#f0fbf3;border:1px solid #9dd4ac;
+  border-right:4px solid #0f5132;
+  padding:14px 18px;margin-bottom:24px;
+}
+.stamp-icon{font-size:1.6rem;flex-shrink:0;}
+.stamp-text{font-size:0.78rem;color:#1e4a30;line-height:1.7;}
+.stamp-text strong{color:#0f5132;display:block;font-size:0.85rem;margin-bottom:2px;}
+
+/* body text */
+.section-title{
+  font-family:'Frank Ruhl Libre',serif;
+  font-size:0.72rem;letter-spacing:0.22em;color:#8a7040;
+  text-transform:uppercase;
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title::before{content:'';flex:none;width:24px;height:1px;background:#c8b87a;}
+.section-title::after{content:'';flex:1;height:1px;background:#c8b87a;opacity:0.4;}
+
+.body-text{
+  font-size:0.9rem;line-height:2;color:#2a2010;
+  margin-bottom:24px;
+  text-align:justify;
+}
+.body-text .highlight{
+  font-weight:700;color:#0f5132;
+  border-bottom:1px dotted #0f5132;
+}
+
+/* reason box */
+.reason-box{
+  background:#f0fbf3;
+  border:1px solid #9dd4ac;
+  border-right:4px solid #0f5132;
+  padding:16px 20px;
+  margin-bottom:28px;
+  font-size:0.85rem;
+  line-height:1.9;
+  color:#1a2e1a;
+}
+.reason-box .reason-title{
+  font-size:0.65rem;letter-spacing:0.2em;color:#0f5132;
+  text-transform:uppercase;margin-bottom:8px;font-weight:700;
+}
+
+/* scope / provisions */
+.provisions{
+  border:1px solid #d4c08a;padding:16px 20px;margin-bottom:28px;
+}
+.prov-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:7px 0;border-bottom:1px solid #e8e0c8;
+  font-size:0.82rem;color:#2a2010;line-height:1.6;
+}
+.prov-item:last-child{border-bottom:none;}
+.prov-num{
+  width:20px;height:20px;border-radius:50%;
+  background:#0f5132;color:#fff;
+  font-size:0.6rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;
+}
+
+/* signatures */
+.sig-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+  margin-top:36px;padding-top:24px;border-top:1px solid #c8b87a;
+}
+.sig-block{text-align:center;}
+.sig-line{height:1px;background:#1a1a1a;margin-bottom:6px;}
+.sig-name{font-size:0.8rem;font-weight:700;color:#1a1a1a;}
+.sig-title{font-size:0.62rem;color:#7a6a40;margin-top:2px;letter-spacing:0.08em;}
+
+/* final seal */
+.final-seal{
+  text-align:center;margin-top:28px;
+  padding-top:20px;border-top:1px solid #e0d4a8;
+}
+.seal-text{
+  font-size:0.62rem;color:#a09060;letter-spacing:0.2em;
+  text-transform:uppercase;line-height:2;
+}
+.seal-emoji{font-size:2rem;display:block;margin-bottom:8px;opacity:0.5;}
+
+@media print{
+  body{background:#fff;padding:0;}
+  .page{box-shadow:none;border:none;max-width:100%;}
+  .print-btn{display:none!important;}
+}
+.print-btn{
+  position:fixed;bottom:24px;left:24px;
+  padding:10px 20px;
+  background:#1a1a1a;color:#fdfaf4;
+  border:none;border-radius:6px;
+  font-family:'Heebo',sans-serif;font-size:0.8rem;font-weight:600;
+  cursor:pointer;transition:all 0.2s;
+  box-shadow:0 4px 14px rgba(0,0,0,0.25);
+}
+.print-btn:hover{background:#333;transform:translateY(-1px);}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <span class="corner-tl">✦</span>
+  <span class="corner-tr">✦</span>
+  <span class="corner-bl">✦</span>
+  <span class="corner-br">✦</span>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="org-name">גיזבאללה — Gizballah Organization · מסמך רשמי סווג</div>
+    <div class="doc-title">כתב חסות</div>
+    <div class="doc-subtitle">IMMUNITY / SAFE-PASSAGE LETTER · OFFICIAL PROTECTION ORDER</div>
+    <div class="doc-number" id="docNumDisplay">מספר אישור: GSAFE-AMELA-000001</div>
+  </div>
+
+  <!-- META -->
+  <div class="meta-grid">
+    <div class="meta-item">
+      <div class="meta-label">שם המוגן/ת</div>
+      <div class="meta-val">אמלה</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">היקף החסות</div>
+      <div class="meta-val green">🛡️ חסות מלאה</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">מקור ההחלטה</div>
+      <div class="meta-val">מועצת הנץ, באמצעות הנץ השוקט</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">סטטוס</div>
+      <div class="meta-val green">✓ פעיל — בתוקף</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">תאריך הפקת הצו</div>
+      <div class="meta-val" id="docDate"></div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">תוקף</div>
+      <div class="meta-val green">בלתי מוגבל בזמן</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">מנפיק הצו</div>
+      <div class="meta-val">הנץ השוקט — נשיא הגיזבאללה</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">מספר סוכן מנפיק</div>
+      <div class="meta-val" style="font-family:monospace;letter-spacing:0.1em;">#00002</div>
+    </div>
+  </div>
+
+  <!-- STAMP -->
+  <div class="stamp-row">
+    <div class="stamp-icon">🕊️</div>
+    <div class="stamp-text">
+      <strong>הגנה רשמית ומחייבת — תקפה כלפי כלל סוכני הגיזבאללה</strong>
+      מסמך זה מהווה ברית רשמית בין ארגון הגיזבאללה לבין הנושאת בו, ומחייב את כל דרגי הארגון לכבד את החסות המוענקת בזאת ללא יוצא מן הכלל.
+    </div>
+  </div>
+
+  <!-- REASON -->
+  <div class="section-title">נימוק ההחלטה</div>
+  <div class="reason-box">
+    <div class="reason-title">// קביעת מועצת הנץ</div>
+    בעקבות בחינה יסודית שנערכה על ידי <strong>מועצת הנץ</strong>, הגוף השיפוטי העליון של הגיזבאללה, באמצעות הנץ השוקט — נשיא הארגון —
+    נקבע באופן חד-משמעי כי <strong class="highlight">אין לאמלה כל אינטרס הנוגד את הגיזבאללה</strong>, וכי אין בפעולותיה, בזיקתה או בנוכחותה כל איום או ניגוד עניינים כלפי הארגון או מטרותיו.
+    <br><br>
+    לאור מסקנה זו, מחליטה המועצה להעניק לה חסות רשמית ומלאה, ובכך לסלק מעליה כל חשד או סיווג כאויבת הארגון.
+  </div>
+
+  <!-- PROVISIONS -->
+  <div class="section-title">הוראות מחייבות</div>
+  <div class="provisions">
+    <div class="prov-item">
+      <div class="prov-num">1</div>
+      <div>כל סוכן בגיזבאללה, מכל דרגה, מחויב שלא להתייחס לאמלה כאל אויבת הארגון, במעשה, בדיבור או בכוונה.</div>
+    </div>
+    <div class="prov-item">
+      <div class="prov-num">2</div>
+      <div>אין להפעיל כלפיה מעקב, חקירה, פעולת איסוף מודיעיני או כל פעולה עוינת אחרת, אלא באישור מפורש ומחודש של הנשיא.</div>
+    </div>
+    <div class="prov-item">
+      <div class="prov-num">3</div>
+      <div>כתב חסות זה תקף כלפי כלל היחידות והדרגים בארגון, ואין בסמכות אף גורם, זולת הנשיא בעצמו, לבטלו או לצמצמו.</div>
+    </div>
+    <div class="prov-item">
+      <div class="prov-num">4</div>
+      <div>הפרת הוראות מסמך זה על ידי כל סוכן תיחשב כעבירת משמעת חמורה ותטופל בהתאם לפרוטוקולים הפנימיים של הארגון.</div>
+    </div>
+    <div class="prov-item">
+      <div class="prov-num">5</div>
+      <div>החסות תישאר בתוקף ללא הגבלת זמן, אלא אם תתקבל החלטה מפורשת אחרת על ידי מועצת הנץ.</div>
+    </div>
+  </div>
+
+  <!-- BODY TEXT -->
+  <div class="section-title">הערת הנשיא</div>
+  <div class="body-text">
+    הגיזבאללה יודע להבחין בין מי שמאיים על דרכו לבין מי שאינו נוגע בה כלל.
+    הבחינה שנערכה הייתה יסודית, וההחלטה ברורה: אין כאן ניגוד, אין כאן איום — יש כאן אדם שאינו חלק מהמאבק.
+    <br><br>
+    <span class="highlight">מי שאינו אויב, לא ייחשב ככזה. זו מילת הנשיא, וזו מילת המועצה.</span>
+  </div>
+
+  <!-- SIGNATURES -->
+  <div class="sig-row">
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">הנץ השוקט</div>
+      <div class="sig-title">נשיא הגיזבאללה · סוכן #00002</div>
+    </div>
+    <div class="sig-block">
+      <div class="sig-line"></div>
+      <div class="sig-name">מועצת הנץ</div>
+      <div class="sig-title">גוף שיפוטי עליון · אישור רשמי</div>
+    </div>
+  </div>
+
+  <!-- SEAL -->
+  <div class="final-seal">
+    <span class="seal-emoji">🦅</span>
+    <div class="seal-text">
+      גיזבאללה — GIZBALLAH ORGANIZATION<br>
+      מסמך זה הינו רשמי ומחייב · Immunity Order GSAFE-AMELA<br>
+      כל הזכויות שמורות לארגון הגיזבאללה
+    </div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ הדפס / שמור PDF</button>
+
+<script>
+const d = new Date();
+document.getElementById('docDate').textContent = d.toLocaleDateString('he-IL',{
+  day:'2-digit',month:'2-digit',year:'numeric'
+}) + ' · ' + d.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'});
+
+// Generate a unique-looking code for display
+const code = 'GSAFE-' + Math.random().toString(36).slice(2,7).toUpperCase() + '-' + Date.now().toString().slice(-5);
+document.getElementById('docNumDisplay').textContent = 'מספר אישור: ' + code;
+</script>
+</body>
+</html>
